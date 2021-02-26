@@ -1,9 +1,9 @@
-package pkg
+package gt_error
 
 import (
+	"html/template"
 	"log"
 	"net/http"
-	"html/template"
 )
 
 func InternalServerError(w http.ResponseWriter, r *http.Request) {

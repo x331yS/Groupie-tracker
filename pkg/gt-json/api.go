@@ -1,6 +1,7 @@
-package pkg
+package gt_json
 
 import (
+	"../gt-error"
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
@@ -37,12 +38,12 @@ type About struct {
 	RelationData Relation
 }
 
-var artists Artist
-var relations Relation
-var apiURL = "https://groupietrackers.herokuapp.com/api/"
+var Artists Artist
+var Relations Relation
+var ApiURL = "https://groupietrackers.herokuapp.com/api/"
 
 func ConnectToAPI(s string) ([]byte, error) {
-	resp, err := http.Get(apiURL + s)
+	resp, err := http.Get(ApiURL + s)
 	if err != nil {
 		return nil, err
 	}
@@ -56,11 +57,11 @@ func ConnectToAPI(s string) ([]byte, error) {
 func ConnnectParseAPI(w http.ResponseWriter, r *http.Request, api string) {
 	body, err := ConnectToAPI(api)
 	if err != nil {
-		InternalServerError(w, r)
+		gt_error.InternalServerError(w, r)
 	}
 	if api == "artists" {
-		_ = json.Unmarshal(body, &artists)
+		_ = json.Unmarshal(body, &Artists)
 	} else if api == "relation" {
-		_ = json.Unmarshal(body, &relations)
+		_ = json.Unmarshal(body, &Relations)
 	}
 }
