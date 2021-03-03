@@ -37,3 +37,11 @@ func AboutHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func SearchHandler(w http.ResponseWriter, r *http.Request) {
+	if gt_json.Artists == nil {
+		gt_json.ConnnectParseAPI(w, r, "artists")
+	}
+	searchArr := &gt_json.Search{Artists: gt_json.Artists, RelationS: gt_json.Relations}
+	t, _ := template.ParseFiles("templates/search.html")
+	t.Execute(w, searchArr)
+}

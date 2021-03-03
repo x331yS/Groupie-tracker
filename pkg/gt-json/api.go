@@ -38,6 +38,11 @@ type About struct {
 	RelationData Relation
 }
 
+type Search struct {
+	Artists   Artist
+	RelationS Relation
+}
+
 var Artists Artist
 var Relations Relation
 var ApiURL = "https://groupietrackers.herokuapp.com/api/"
