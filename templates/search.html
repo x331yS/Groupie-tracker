@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/assets/css/search.css">
     <link rel="stylesheet" href="/assets/css/index.css"/>
-    <link rel="stylesheet" href="/assets/css/footer.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Megrim&display=swap" rel="stylesheet">
@@ -36,34 +35,45 @@
         <form action="/" method="POST"><br>
             <input class="search" id="sch" type="text" name="toSearch" list="list" placeholder="Search">
             <datalist id="list">
-                {{range $flo, $totole := .Artists}}
-                <option>{{(index $API.Artists $flo).Name}} // Artist</option>
+                {{ range .Artists}}
+                <option>{{.Name}} // Artist/Band</option>
+                {{ range .Members}}
+                <option>{{ . }} // Member</option>
                 {{end}}
-                {{range $flo, $totole := .Artists}}{{range .Members }}
-                <option>{{.}} // Member</option>
-                {{end}}{{end}}
-                {{range $flo, $totole := .Locations.Index}}{{range .Locations }}
-                <option>{{.}} // Location</option>
-                {{end}}{{end}}
-                {{range $flo, $totole := .Artists}}
-                <option>{{(index $API.Artists $flo).FirstAlbum}} // First Album</option>
+                <option>{{.CreationDate}} // Creation Date</option>
+                <option>{{.FirstAlbum}} // First Album Date</option>
                 {{end}}
-                {{range $flo, $totole := .Artists}}
-                <option>{{(index $API.Artists $flo).CreationDate}} // Creation Date</option>
+                {{ range .RelationS.Index}}
+                {{range $flo, $totole := .DatesLocations}}
+                <option>{{$flo}} // Concert Location</option>
+                {{range $totole}}
+                <option>{{.}} // Concert Date</option>
+                {{end}}
+                {{end}}
                 {{end}}
             </datalist>
-            <button type="submit">Search</button>
+        </form>
+    <div class="input-field first-wrap">
+        <div class="custom-select" id="search-type">
+            <select name="searchCateg">
+                <option value="select">Filter</option>
+                <option value="artist">Artist/Band</option>
+                <option value="member">Member</option>
+                <option value="album">First Album Date</option>
+                <option value="creation">Creation Date</option>
+                <option value="location">Concert Location</option>
+                <option value="date">Concert Date</option>
+            </select>
+        </div>
+    </div>
+    <div class="input-field third-wrap">
+        <button type="submit">Submit</button>
         </form>
     </div>
-</main>
-<div class="footer">
-    <div class="social">
-        <i class="fab fa-youtube"></i>
-        <i class="fab fa-facebook"></i>
-        <i class="fab fa-instagram"></i>
-        <i class="fab fa-twitter"></i>
+
     </div>
-</div>
+</main>
 </body>
 
 </html>
+
