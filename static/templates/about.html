@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="/static/assets/css/about.css">
     <link rel="stylesheet" href="/static/assets/css/footer.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
 </head>
 
 <body>
@@ -32,12 +36,12 @@
             <div>{{ . }}</div>
             {{end}}
         </div>
-        <div class="categoryName">Creation date:</div>
-        <div> {{.CreationDate}}</div>
-        <div class="categoryName">First album:</div>
+        <div class="categoryName">Creation date: </div>
+        <div> {{.CreationDate}} </div>
+        <div class="categoryName">First album: </div>
         <div>{{.FirstAlbum}}</div>
         <div class="concerts-container">
-            <div class="categoryName">Concerts:</div>
+            <div class="categoryName">Concerts: </div>
             {{range $key, $value := (index .RelationData.Index $id).DatesLocations}}
             <div class="cities">{{$key}}</div>
             <div>
@@ -48,7 +52,10 @@
             {{end}}
         </div>
     </div>
+    <div id="map"></div>
 </div>
+<script src="/static/assets/js/map.js"></script>
+
 <div class="footer">
     <div class="social">
         <i class="fab fa-youtube"></i>
@@ -57,5 +64,6 @@
         <i class="fab fa-twitter"></i>
     </div>
 </div>
+
 </body>
 </html>
