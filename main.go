@@ -15,6 +15,7 @@ func main() {
 	http.HandleFunc("/", gt_web.IndexHandler)
 	http.HandleFunc("/about/", gt_web.AboutHandler)
 	http.HandleFunc("/search/", gt_search.SearchHandler)
+	http.HandleFunc("/filter/", gt_search.FilterHandle)
 	fmt.Println("Listening at localhost:1111\nHttp Status :", http.StatusOK)
 //	gt_web.Openbrowser("http://localhost:1111")
 	err := http.ListenAndServe(":1111", nil)

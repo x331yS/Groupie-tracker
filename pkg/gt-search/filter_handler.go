@@ -2,7 +2,6 @@ package gt_search
 
 import (
 	"../gt-error"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -22,7 +21,6 @@ func FilterHandle(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path[8:]
 	id := -1
 	id, err := strconv.Atoi(r.URL.Path[8:])
-	fmt.Println(path)
 	if err != nil && path != "all" {
 		gt_error.StatusNotFound(w, r)
 		return
@@ -54,7 +52,7 @@ func FilterHandle(w http.ResponseWriter, r *http.Request) {
 
 	} else {
 		//Send one artist
-		sendArtist(w, r, All.Artists[id-1].Name)
+		SendArtist(w, r, All.Artists[id-1].Name)
 	}
 }
 

@@ -1,0 +1,99 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/static/assets/css/index.css"/>
+  <link rel="stylesheet" href="/static/assets/css/footer.css"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Groupie Tracker</title>
+</head>
+
+<body>
+<div class="header">
+  <a href="/" class="logo">Groupie-Tracker</a>
+  <div class="header-right">
+    <a href="/" class="link">Home</a>
+    <a href="/search/" class="link">Search</a>
+    <a href="/filter/all" class="link">Filter</a>
+    <a href="https://groupietrackers.herokuapp.com/api" class="link">API</a>
+    <a href="https://rickandmortyapi.com/" class="link">Other API</a>
+    <a href="https://github.com/x33lyS/groupie-tracker.git" class="link">About this project</a>
+  </div>
+</div>
+  <div class="wrapper"></div>
+  <div class="container">
+    <form method="POST" class="filters" action="/filter/all">
+      <div class="cb">
+        <p class="cb-title">Filter by:</p>
+        <input type="checkbox" id="cb-cd" onclick="show('cb-cd', 'filter-cd')">
+        <label for="cb-cd"> Creation date</label><br>
+        <input type="checkbox" id="cb-fad" onclick="show('cb-fad', 'filter-fad')">
+        <label for="cb-fad"> First album date</label><br>
+        <input type="checkbox" id="cb-nom" onclick="show('cb-nom', 'filter-nom')">
+        <label for="cb-nom"> Number of members</label><br>
+        <input type="checkbox" id="cb-loc" onclick="show('cb-loc', 'filter-loc')">
+        <label for="cb-loc"> Location</label><br>
+      </div>
+      <div>
+        <div class="filter-inputs" id="filter-cd" style="display:none">
+          <p>Creation date:</p>
+          <input name="cd-from" placeholder="From">
+          <input name="cd-to" placeholder="To"> <br>
+        </div>
+        <div class="filter-inputs" id="filter-fad" style="display:none">
+          <p>First album date:</p>
+          <input name="fad-from" placeholder="From">
+          <input name="fad-to" placeholder="To"> <br>
+        </div>
+        <div class="filter-inputs" id="filter-nom" style="display:none">
+          <p>Number of members:</p>
+          <input name="nom-from" placeholder="From">
+          <input name="nom-to" placeholder="To"> <br>
+        </div>
+        <div class="filter-inputs" id="filter-loc" style="display:none">
+          <p>Location:</p>
+          <input name="loc"> <br>
+        </div>
+      </div>
+      <button type="submit">Filter</button>
+    </form>
+
+    <div class="grid">
+      <section class="cards">
+      {{range $i, $v := .Artists}}
+      <div class="card">
+        <div class="card__image-container">
+          <a href="/about/{{ .ID}}">
+          <img class="img " src="{{.Image}}" alt="Artist's logo">
+          </a>
+        </div>
+        <div class="card__content">
+          <p class="card__title text--medium">
+            {{.Name}}</p>
+          <div class="card__info">
+          <p>Creation date: {{.CreationDate}}</p>
+          <p>First album date: {{.FirstAlbum}}</p>
+          <p>Number of members: {{len .Members}}</p>
+        </div>
+        </div>
+      </div>
+      {{end}}
+      </section>
+    </div>
+  </div>
+  <script src="/static/assets/js/filter.js"></script>
+<div class="footer">
+  <div class="social">
+    <i class="fab fa-youtube"></i>
+    <i class="fab fa-facebook"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-twitter"></i>
+  </div>
+</div>
+</body>
+
+</html>

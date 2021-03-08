@@ -63,15 +63,15 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 		//What to send to user
 		switch searchType {
 		case "artist":
-			sendArtist(w, r, toSearch)
+			SendArtist(w, r, toSearch)
 		case "member":
-			sendMember(w, r, toSearch)
+			SendMember(w, r, toSearch)
 		case "location":
-			sendLocation(w, r, toSearch)
+			SendLocation(w, r, toSearch)
 		case "firstAlbum":
-			sendFirstAlbum(w, r, toSearch)
+			SendFirstAlbum(w, r, toSearch)
 		case "creationDate":
-			sendCreationDate(w, r, toSearch)
+			SendCreationDate(w, r, toSearch)
 		}
 	}
 }

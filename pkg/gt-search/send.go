@@ -9,7 +9,7 @@ import (
 )
 
 //Send info about artist
-func sendArtist(w http.ResponseWriter, r *http.Request, toSearch string) {
+func SendArtist(w http.ResponseWriter, r *http.Request, toSearch string) {
 	All.ID = -1
 	//Searching artist id by name
 	for i := 0; i < 52; i++ {
@@ -20,7 +20,7 @@ func sendArtist(w http.ResponseWriter, r *http.Request, toSearch string) {
 	}
 	//Sending not found page if artist not found
 	if All.ID == -1 {
-		temp, err := template.ParseFiles("../../static/templates/search/noresult.html")
+		temp, err := template.ParseFiles("./static/templates/noresult.html")
 		if err != nil {
 			gt_error.InternalServerError(w, r)
 			return
@@ -28,7 +28,7 @@ func sendArtist(w http.ResponseWriter, r *http.Request, toSearch string) {
 		temp.Execute(w, toSearch)
 	} else {
 		//Send info to user
-		temp, err := template.ParseFiles("../../static/templates/search/artist.html")
+		temp, err := template.ParseFiles("./static/templates/artist.html")
 		if err != nil {
 			gt_error.InternalServerError(w, r)
 			return
@@ -38,7 +38,7 @@ func sendArtist(w http.ResponseWriter, r *http.Request, toSearch string) {
 }
 
 //Send info about member
-func sendMember(w http.ResponseWriter, r *http.Request, toSearch string) {
+func SendMember(w http.ResponseWriter, r *http.Request, toSearch string) {
 	type MemberPage struct {
 		Title  string
 		Artist []string
@@ -55,7 +55,7 @@ func sendMember(w http.ResponseWriter, r *http.Request, toSearch string) {
 	}
 	//Sending not found page if artist not found
 	if memberPage.Title == "" {
-		temp, err := template.ParseFiles("../../static/templates/search/noresult.html")
+		temp, err := template.ParseFiles("./static/templates/noresult.html")
 		if err != nil {
 			gt_error.InternalServerError(w, r)
 
@@ -64,7 +64,7 @@ func sendMember(w http.ResponseWriter, r *http.Request, toSearch string) {
 		temp.Execute(w, toSearch)
 	} else {
 		//Sending info about member
-		temp, err := template.ParseFiles("../../static/templates/search/member.html")
+		temp, err := template.ParseFiles("./static/templates/member.html")
 		if err != nil {
 			gt_error.InternalServerError(w, r)
 			return
@@ -74,7 +74,7 @@ func sendMember(w http.ResponseWriter, r *http.Request, toSearch string) {
 }
 
 //Send info about Location
-func sendLocation(w http.ResponseWriter, r *http.Request, toSearch string) {
+func SendLocation(w http.ResponseWriter, r *http.Request, toSearch string) {
 	type LocationPage struct {
 		Title   string
 		Artists []string
@@ -92,7 +92,7 @@ func sendLocation(w http.ResponseWriter, r *http.Request, toSearch string) {
 	}
 	//Sending not found page if artist not found
 	if locationPage.Title == "" {
-		temp, err := template.ParseFiles("../../static/templates/search/noresult.html")
+		temp, err := template.ParseFiles("./static/templates/noresult.html")
 		if err != nil {
 			gt_error.InternalServerError(w, r)
 			return
@@ -100,7 +100,7 @@ func sendLocation(w http.ResponseWriter, r *http.Request, toSearch string) {
 		temp.Execute(w, toSearch)
 	} else {
 		//Sending info about location
-		temp, err := template.ParseFiles("../../static/templates/search/location.html")
+		temp, err := template.ParseFiles("./static/templates/location.html")
 		if err != nil {
 			gt_error.InternalServerError(w, r)
 			return
@@ -110,7 +110,7 @@ func sendLocation(w http.ResponseWriter, r *http.Request, toSearch string) {
 }
 
 //Send info about first album
-func sendFirstAlbum(w http.ResponseWriter, r *http.Request, toSearch string) {
+func SendFirstAlbum(w http.ResponseWriter, r *http.Request, toSearch string) {
 	type FirstAlbumPage struct {
 		Title   string
 		Artists []string
@@ -125,7 +125,7 @@ func sendFirstAlbum(w http.ResponseWriter, r *http.Request, toSearch string) {
 	}
 	if firstAlbumPage.Title == "" {
 		//Sending not found page if artist not found
-		temp, err := template.ParseFiles("../../static/templates/search/noresult.html")
+		temp, err := template.ParseFiles("./static/templates/noresult.html")
 		if err != nil {
 			gt_error.InternalServerError(w, r)
 			return
@@ -133,7 +133,7 @@ func sendFirstAlbum(w http.ResponseWriter, r *http.Request, toSearch string) {
 		temp.Execute(w, toSearch)
 	} else {
 		//Sending info about location
-		temp, err := template.ParseFiles("../../static/templates/search/firstalbum.html")
+		temp, err := template.ParseFiles("./static/templates/firstalbum.html")
 		if err != nil {
 			gt_error.InternalServerError(w, r)
 			return
@@ -143,7 +143,7 @@ func sendFirstAlbum(w http.ResponseWriter, r *http.Request, toSearch string) {
 }
 
 //Send info about creation date
-func sendCreationDate(w http.ResponseWriter, r *http.Request, toSearch string) {
+func SendCreationDate(w http.ResponseWriter, r *http.Request, toSearch string) {
 	year, _ := strconv.Atoi(toSearch)
 	type CreationDatePage struct {
 		Title   string
@@ -159,7 +159,7 @@ func sendCreationDate(w http.ResponseWriter, r *http.Request, toSearch string) {
 	}
 	if creationDatePage.Title == "" {
 		//Sending not found page if artists not found
-		temp, err := template.ParseFiles("../../static/templates/search/noresult.html")
+		temp, err := template.ParseFiles("./static/templates/noresult.html")
 		if err != nil {
 			gt_error.InternalServerError(w, r)
 			return
@@ -167,7 +167,7 @@ func sendCreationDate(w http.ResponseWriter, r *http.Request, toSearch string) {
 		temp.Execute(w, toSearch)
 	} else {
 		//Sending info about creation date
-		temp, err := template.ParseFiles("../../static/templates/search/creationdate.html")
+		temp, err := template.ParseFiles("./static/templates/creationdate.html")
 		if err != nil {
 			gt_error.InternalServerError(w, r)
 			return
