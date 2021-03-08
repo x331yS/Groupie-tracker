@@ -16,7 +16,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 		gt_error.StatusNotFound(w, r)
 		return
 	}
-	t, _ := template.ParseFiles("templates/index.html")
+	t, _ := template.ParseFiles("static/templates/index.html")
 	t.Execute(w, gt_json.Artists)
 }
 
@@ -30,18 +30,9 @@ func AboutHandler(w http.ResponseWriter, r *http.Request) {
 		id = id - 1
 		artist := gt_json.Artists[id]
 		about := &gt_json.About{ID: id, Image: artist.Image, Name: artist.Name, Members: artist.Members, FirstAlbum: artist.FirstAlbum, CreationDate: artist.CreationDate, RelationData: gt_json.Relations}
-		t, _ := template.ParseFiles("templates/about.html")
+		t, _ := template.ParseFiles("./static/templates/about.html")
 		t.Execute(w, about)
 	} else {
 		gt_error.BadRequest(w, r)
 	}
-}
-
-func SearchHandler(w http.ResponseWriter, r *http.Request) {
-	if gt_json.Artists == nil {
-		gt_json.ConnnectParseAPI(w, r, "artists")
-	}
-	searchArr := &gt_json.Search{Artists: gt_json.Artists, RelationS: gt_json.Relations}
-	t, _ := template.ParseFiles("templates/search.html")
-	t.Execute(w, searchArr)
 }

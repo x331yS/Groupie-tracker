@@ -1,0 +1,20 @@
+.footer {
+    width: 100%;
+    background: black;
+    padding: 1.5em 2em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.footer i {
+    font-size: 3em;
+    color: #fff;
+    margin: 10px;
+}
+
+.footer i:hover {
+    cursor: pointer;
+}
