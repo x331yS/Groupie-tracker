@@ -1,4 +1,4 @@
-package gt_search
+package gt_filter
 
 import (
 	"encoding/json"

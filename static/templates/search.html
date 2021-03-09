@@ -1,72 +1,103 @@
-<html lang="en">
-
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <link rel="stylesheet" href="/static/assets/css/search.css">
-    <link rel="stylesheet" href="/static/assets/css/index.css"/>
+    <link rel="stylesheet" href="/static/assets/css/footer.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Megrim&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Groupie Tracker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 </head>
-
 <body>
-<main>
-    <div class="header">
-        <a href="/" class="logo">Groupie-Tracker</a>
-        <div class="header-right">
-            <a href="/" class="link">Home</a>
-            <a href="/search/" class="link">Search</a>
-            <a href="/filter/all" class="link">Filter</a>
-            <a href="https://groupietrackers.herokuapp.com/api" class="link">API</a>
-            <a href="https://rickandmortyapi.com/" class="link">Other API</a>
-            <a href="https://github.com/x33lyS/groupie-tracker.git" class="link">About this project</a>
+<div class="header">
+    <a href="/" class="logo">Groupie-Tracker</a>
+    <div class="header-right">
+        <a href="/" class="link">Home</a>
+        <a href="/search/" class="link">Search</a>
+        <a href="/filter/all" class="link">Filter</a>
+        <a href="https://groupietrackers.herokuapp.com/api" class="link">API</a>
+        <a href="https://rickandmortyapi.com/" class="link">Other API</a>
+        <a href="https://github.com/x33lyS/groupie-tracker.git" class="link">About this project</a>
 
 
-        </div>
     </div>
-    {{$API := .}}
-    <div class="searchBar">
-        <div class="tit">
-            <a href="/" class="logo">Search Groupie-Tracker</a> <br> <br>
-        </div>
-        <form action="/" method="POST"><br>
-            <input class="search" id="sch" type="text" name="toSearch" list="list" placeholder="Search">
-            <datalist id="list">
-                {{range $i, $v := .Artists}}
-                <option>{{(index $API.Artists $i).Name}} // Artist</option>
-                {{end}}
-                {{range $i, $v := .Artists}}{{range .Members }}
-                <option>{{.}} // Member</option>
-                {{end}}{{end}}
-                {{range $i, $v := .Locations.Index}}{{range .Locations }}
-                <option>{{.}} // Location</option>
-                {{end}}{{end}}
-                {{range $i, $v := .Artists}}
-                <option>{{(index $API.Artists $i).FirstAlbum}} // First Album</option>
-                {{end}}
-                {{range $i, $v := .Artists}}
-                <option>{{(index $API.Artists $i).CreationDate}} // Creation Date</option>
-                {{end}}
-            </datalist>
-            <select class="selector" id="sType" name="searchType">
-                <option selected value="artist">Artist</option>
-                <option value="member">Member</option>
-                <option value="location">Location</option>
-                <option value="firstAlbum">First Album</option>
-                <option value="creationDate">Creation Date</option>
-            </select>
-            <button type="submit">Search</button>
-            <br><br>
-        </form>
-    </div>
+</div>
 
-    </div>
-</main>
-<script src="../static/assets/js/search.js"></script>
+<h1><span>Filter Table</span></h1>
+<br><br>
+<input id="myInput" type="text" placeholder="Search...">
+<br><br>
+
+<table>
+    <thead>
+    <tr>
+        <th><a>ID</a></th>
+        <th><a>Artist/Band name</a></th>
+        <th><a>Members</a></th>
+        <th><a>Concert locations</a></th>
+        <th><a>First album date</a></th>
+        <th><a>Creation date</a></th>
+
+    </tr>
+    </thead>
+    <tbody id="myTable">
+    {{range .}}
+    <tr>
+        <td>
+            <a href="/about/{{ .ID}}"/>
+            {{.ID}}</td>
+        <td>
+            <a href="/about/{{ .ID}}"/>
+            {{.Name}}</td>
+        <td>
+            <ul>
+                <a href="/about/{{ .ID}}"/>
+                {{range .Members}}
+                <li>{{.}}</li>
+                {{end}}
+            </ul>
+        </td>
+        <td>
+            <ul>
+                <a href="/about/{{ .ID}}"/>
+                {{range $key , $value := .Concerts}}
+                <li>{{$key}}</li>
+                {{end}}
+            </ul>
+        </td>
+        <td>
+            <a href="/about/{{ .ID}}"/>
+            {{.CreationDate}}</td>
+        <td>
+            <a href="/about/{{ .ID}}"/>
+            {{.FirstAlbum}}</td>
+    </tr>
+    {{end}}
+    </tbody>
+</table>
+
+
 </body>
-
+<div class="footer">
+    <div class="social">
+        <i class="fab fa-youtube"></i>
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-twitter"></i>
+    </div>
+</div>
 </html>
