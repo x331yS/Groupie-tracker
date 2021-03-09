@@ -1,4 +1,4 @@
-package gt_web
+package gt_index
 
 import (
 	"fmt"
