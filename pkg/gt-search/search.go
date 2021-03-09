@@ -12,6 +12,7 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 		gt_error.StatusNotFound(w, r)
 		return
 	}
+	//Search Template
 	t, err := template.ParseFiles("./static/templates/search.html")
 	if err != nil {
 		gt_error.InternalServerError(w, r)

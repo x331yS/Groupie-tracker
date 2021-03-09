@@ -1,5 +1,6 @@
 package gt_filter
 
+//API for Filter Handler
 type API struct {
 	ID        int
 	Artists   Artists

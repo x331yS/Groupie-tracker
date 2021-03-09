@@ -8,7 +8,9 @@ import (
 	"net/http"
 	"os"
 )
+
 func Data() {
+	//Use API for Searh Handler
 	allData = GatherDataUp("https://groupietrackers.herokuapp.com/api/artists")
 	if allData == nil {
 		fmt.Println("Failed to gather Data from API")
@@ -17,6 +19,7 @@ func Data() {
 }
 
 func GatherDataUp(link string) []artistData {
+	//Parse JSON for Search Handler
 	data1 := GetData(link)
 	Artists := []artistData{}
 	e := json.Unmarshal(data1, &Artists)
@@ -26,13 +29,14 @@ func GatherDataUp(link string) []artistData {
 	}
 	for i := 0; i < len(Artists); i++ {
 		r := relation{}
-		json.Unmarshal(GetData(Artists[i].Relation), &r)
+		_ = json.Unmarshal(GetData(Artists[i].Relation), &r)
 		Artists[i].Concerts = r.Concerts
 	}
 	return Artists
 }
 
 func GetData(link string) []byte {
+	//Get API for Searh Handler
 	data1, e1 := http.Get(link)
 	if e1 != nil {
 		log.Fatal(e1)

@@ -8,10 +8,10 @@ import (
 	"os"
 )
 
-//Main struct
+//Main struct for Search
 var All API
 
-//Parse JSON from URL and write to main struct
+//Parse JSON from URL and write to All API struct
 func ParseJSON() {
 	urlArtists := "https://groupietrackers.herokuapp.com/api/artists"
 	urlLocations := "https://groupietrackers.herokuapp.com/api/locations"
@@ -25,6 +25,7 @@ func ParseJSON() {
 }
 
 func ParseInfo(url string, temp interface{}) {
+	//Get Data for Search API
 	res, err := http.Get(url)
 	if err != nil {
 		fmt.Println(err.Error())

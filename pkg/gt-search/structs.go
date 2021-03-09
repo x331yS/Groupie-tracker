@@ -1,5 +1,7 @@
 package gt_search
 
+//Struct use for Search Handler
+
 type artistData struct {
 	ID           int                 `json:"id"`
 	Image        string              `json:"image"`
