@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway:100,400,700');
 
-/*For margin the board*/
+
 * {
+    /*For margin the board*/
     margin: 0px 0px 0px 0px;
 }
 
 body {
     /*Setup middle*/
     background-color: #303032;
-    font-family: Raleway, Open Sans, Droid Sans, Roboto,arial, sans-serif;
+    font-family: Raleway, Open Sans, Droid Sans, Roboto, arial, sans-serif;
     color: #454041;
     text-align: center;
 }
@@ -25,55 +26,16 @@ input {
     transition: 0.5s;
 }
 
-button {
-    /*The button*/
-    background-color: #303032;
-    color: rgb(255, 255, 255);
-    border: 1px solid white;
-    height: 34px;
-    width: 130px;
-    font-size: 16px;
-    border-radius: 5px;
-    padding-left: 10px;
-    transition: 0.5s;
-}
-
-a{
+a {
     /*Top of the board*/
     color: white;
     text-decoration: none;
 }
 
 
-@media all and (max-device-width: 1366px) {
-
-    button {
-        margin-left: 5px;
-        width: 125px;
-        height: 30px;
-        font-size: 16px;
-        margin-bottom: 10px;
-
-    }
-}
-
-@media all and (max-device-width: 1200px) {
-
-    button {
-        margin-left: 5px;
-        width: 125px;
-        height: 30px;
-        font-size: 16px;
-        margin-bottom: 10px;
-
-    }
-}
-
-
-
 h1 {
     /*h1 specific*/
-    font-family: Raleway, Open Sans, Droid Sans, Roboto,arial, sans-serif;
+    font-family: Raleway, Open Sans, Droid Sans, Roboto, arial, sans-serif;
     color: #ffffff;
     font-size: 3.1rem;
     display: inline-block;
@@ -85,7 +47,7 @@ h1 {
 
 table {
     /*For the board*/
-    font-family: Raleway, Open Sans, Droid Sans, Roboto,arial, sans-serif;
+    font-family: Raleway, Open Sans, Droid Sans, Roboto, arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
     border: 0.2rem solid #c0c0c0;
@@ -99,11 +61,17 @@ th {
     border: 1px solid #dddddd;
     padding: 8px;
 }
+
 td {
     /*API info*/
     border: 1px solid #dddddd;
     padding: 8px;
     text-align: left;
+}
+
+li {
+    /*Delete point in front of li*/
+    list-style-type: none;
 }
 
 

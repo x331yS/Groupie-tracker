@@ -1,6 +1,10 @@
+* {
+    /*For margin the board*/
+    margin: 0px 0px 0px 0px;
+}
 
 .beautiful {
-    margin: 10px;
+    margin: 0;
     text-align: center;
     justify-content: center;
     font-family: Raleway, Open Sans, Droid Sans, Roboto,arial, sans-serif;

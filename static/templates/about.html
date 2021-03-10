@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>About</title>
+    <link rel="stylesheet" href="/static/assets/css/header.css"/>
     <link rel="stylesheet" href="/static/assets/css/about.css">
     <link rel="stylesheet" href="/static/assets/css/footer.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
@@ -19,12 +20,12 @@
 <div class="header">
     <a href="/" class="logo">Groupie-Tracker</a>
     <div class="header-right">
-        <a href="/" class="link">Home</a>
-        <a href="/search/" class="link">Search</a>
-        <a href="/filter/all" class="link">Filter</a>
-        <a href="https://groupietrackers.herokuapp.com/api" class="link">API</a>
-        <a href="https://rickandmortyapi.com/" class="link">Other API</a>
-        <a href="https://github.com/x33lyS/groupie-tracker.git" class="link">About this project</a>
+        <a href="/">Home</a>
+        <a href="/search/">Search</a>
+        <a href="/filter/all">Filter</a>
+        <a href="https://groupietrackers.herokuapp.com/api" target="_blank">API</a>
+        <a href="https://rickandmortyapi.com/" target="_blank">Other API</a>
+        <a href="https://github.com/x33lyS/groupie-tracker.git" target="_blank">About this project</a>
     </div>
 </div>
 {{$id := .ID}}
@@ -37,12 +38,12 @@
             <div>{{ . }}</div>
             {{end}}
         </div>
-        <div class="categoryName">Creation date: </div>
-        <div> {{.CreationDate}} </div>
-        <div class="categoryName">First album: </div>
+        <div class="categoryName">Creation date:</div>
+        <div> {{.CreationDate}}</div>
+        <div class="categoryName">First album:</div>
         <div>{{.FirstAlbum}}</div>
         <div class="concerts-container">
-            <div class="categoryName">Concerts: </div>
+            <div class="categoryName">Concerts:</div>
             {{range $key, $value := (index .RelationData.Index $id).DatesLocations}}
             <div class="cities">{{$key}}</div>
             <div>
@@ -58,11 +59,11 @@
 <script src="/static/assets/js/map.js"></script>
 
 <div class="footer">
-    <div class="social">
-        <i class="fab fa-youtube"></i>
-        <i class="fab fa-facebook"></i>
-        <i class="fab fa-instagram"></i>
-        <i class="fab fa-twitter"></i>
+    <div>
+        <a href="https://github.com/x33lyS" target="_blank" class="fab fa-github"></a>
+        <a href="https://www.linkedin.com/in/florian-lejosne-178a6b1b6/" target="_blank" class="fab fa-linkedin"></a>
+        <a href="https://discord.gg/8fKKQndCaJ" target="_blank" class="fab fa-discord"></a>
+        <a href="https://www.instagram.com/florian.ljsne/" target="_blank" class="fab fa-instagram"></a>
     </div>
 </div>
 
