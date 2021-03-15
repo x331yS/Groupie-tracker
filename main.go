@@ -13,12 +13,13 @@ import (
 
 func main() {
 	//Set timer
-	fmt.Println("We are launching the Groupie-tracker project\n...Please wait the loading...")
 	start := time.Now()
+	fmt.Println("We are launching the Groupie-tracker project\n...Please wait the loading...")
 	//Parse JSON filter
 	gt_filter.ParseJSON()
 	//Data for search handler
 	gt_search.Data()
+	//For Directory settings
 	fs := http.FileServer(http.Dir("./static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 	//Main page handler

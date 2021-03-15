@@ -12,48 +12,30 @@ import (
 
 func FilterHandle(w http.ResponseWriter, r *http.Request) {
 	//Handle 404 error
-	if len(r.URL.Path) >= 7 {
-		if r.URL.Path[0:8] != "/filter/" {
-			gt_error.StatusNotFound(w, r)
-			return
-		}
-	}
-	path := r.URL.Path[8:]
-	id := -1
-	id, err := strconv.Atoi(r.URL.Path[8:])
-	if err != nil && path != "all" {
-		gt_error.StatusNotFound(w, r)
-		return
-	}
-	if (id <= 0 || id > len(All.Artists)) && path != "all" {
+	if r.URL.Path[0:8] != "/filter/" {
 		gt_error.StatusNotFound(w, r)
 		return
 	}
 	//Sending all artists
-	if path == "all" {
-		switch r.Method {
-		case "GET":
-			//Send all artists
-			temp, err := template.ParseFiles("./static/templates/filter.html")
-			if err != nil {
-				gt_error.InternalServerError(w, r)
-				return
-			}
-			temp.Execute(w, All)
-		case "POST":
-			//Send filtered artists
-			temp, err := template.ParseFiles("./static/templates/filter.html")
-			if err != nil {
-				gt_error.InternalServerError(w, r)
-				return
-			}
-			temp.Execute(w, filter(w, r))
+	switch r.Method {
+	case "GET":
+		//Send all artists
+		temp, err := template.ParseFiles("./static/templates/filter.html")
+		if err != nil {
+			gt_error.InternalServerError(w, r)
+			return
 		}
-
-	} else {
-		//Send one artist
-		SendArtist(w, r, All.Artists[id-1].Name)
+		temp.Execute(w, All)
+	case "POST":
+		//Send filtered artists
+		temp, err := template.ParseFiles("./static/templates/filter.html")
+		if err != nil {
+			gt_error.InternalServerError(w, r)
+			return
+		}
+		temp.Execute(w, filter(w, r))
 	}
+
 }
 
 func filter(w http.ResponseWriter, r *http.Request) API {
