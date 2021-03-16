@@ -5,11 +5,11 @@ Groupie Trackers consists on receiving a given API and manipulate the data conta
 /groupie-tracker is a Go webapp that displays an API on a website.
 
 ## Front-end:
-HTML
-CSS
-JS
+- HTML
+- CSS
+- JS
 ## Back-end:
-Go
+- Go
 
 ## Used APIs:
 - Groupie Tracker API
@@ -29,3 +29,6 @@ and open http://localhost:1111 in your browser
 ## Options
 - Search Bar
 - Filter 
+
+## Example
+ [Other API](https://rickandmortyapi.com/)
