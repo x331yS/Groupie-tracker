@@ -9,12 +9,10 @@
     flex-direction: row;
 }
 
-.footer i {
+.footer a {
     font-size: 3em;
     color: #fff;
     margin: 10px;
+    text-decoration: none;
 }
 
-.footer i:hover {
-    cursor: pointer;
-}

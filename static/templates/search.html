@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link rel="stylesheet" href="/static/assets/css/header.css"/>
+    <link rel="stylesheet" href="/static/assets/css/search.css">
+    <link rel="stylesheet" href="/static/assets/css/footer.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Groupie Tracker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="header">
+    <a href="/" class="logo">Groupie-Tracker</a>
+    <div class="header-right">
+        <a href="/">Home</a>
+        <a href="/search">Search</a>
+        <a href="/filter/">Filter</a>
+        <a href="https://groupietrackers.herokuapp.com/api" target="_blank">API</a>
+        <a href="https://rickandmortyapi.com/" target="_blank">Other API</a>
+        <a href="https://github.com/x33lyS/groupie-tracker.git" target="_blank">About this project</a>
+    </div>
+</div>
+
+<h1>Search Table</h1>
+<br><br>
+<input id="myInput" type="text" placeholder="Search...">
+<br><br>
+
+<table>
+    <thead>
+    <tr>
+        <th><a>ID</a></th>
+        <th><a>Artist/Band name</a></th>
+        <th><a>Members</a></th>
+        <th><a>Concert locations</a></th>
+        <th><a>First album date</a></th>
+        <th><a>Creation date</a></th>
+
+    </tr>
+    </thead>
+    <tbody id="myTable">
+    {{range .}}
+    <tr>
+        <td>
+            <a href="/about/{{ .ID}}"/>
+            {{.ID}}
+        </td>
+        <td>
+            <a href="/about/{{ .ID}}"/>
+            {{.Name}}
+        </td>
+        <td>
+            <ul>
+                <a href="/about/{{ .ID}}"/>
+                {{range .Members}}
+                <li>{{.}}</li>
+                {{end}}
+            </ul>
+        </td>
+        <td>
+            <ul>
+                <a href="/about/{{ .ID}}"/>
+                {{range $key , $value := .Concerts}}
+                <li>{{$key}}</li>
+                {{end}}
+            </ul>
+        </td>
+        <td>
+            <a href="/about/{{ .ID}}"/>
+            {{.CreationDate}}
+        </td>
+        <td>
+            <a href="/about/{{ .ID}}"/>
+            {{.FirstAlbum}}
+        </td>
+    </tr>
+    {{end}}
+    </tbody>
+</table>
+
+
+</body>
+<div class="footer">
+    <div>
+        <a href="https://github.com/x33lyS" target="_blank" class="fab fa-github"></a>
+        <a href="https://www.linkedin.com/in/florian-lejosne-178a6b1b6/" target="_blank" class="fab fa-linkedin"></a>
+        <a href="https://discord.gg/8fKKQndCaJ" target="_blank" class="fab fa-discord"></a>
+        <a href="https://www.instagram.com/florian.ljsne/" target="_blank" class="fab fa-instagram"></a>
+    </div>
+</div>
+</html>

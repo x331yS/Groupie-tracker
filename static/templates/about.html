@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About</title>
+    <link rel="stylesheet" href="/static/assets/css/header.css"/>
+    <link rel="stylesheet" href="/static/assets/css/about.css">
+    <link rel="stylesheet" href="/static/assets/css/footer.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+</head>
+
+<body>
+<div class="header">
+    <a href="/" class="logo">Groupie-Tracker</a>
+    <div class="header-right">
+        <a href="/">Home</a>
+        <a href="/search">Search</a>
+        <a href="/filter/">Filter</a>
+        <a href="https://groupietrackers.herokuapp.com/api" target="_blank">API</a>
+        <a href="https://rickandmortyapi.com/" target="_blank">Other API</a>
+        <a href="https://github.com/x33lyS/groupie-tracker.git" target="_blank">About this project</a>
+    </div>
+</div>
+{{$id := .ID}}
+<div class="container">
+    <img class="artistImage" src="{{.Image}}" alt="Artist's logo">
+    <div class="text">
+        <div class="artistName">{{.Name}}</div>
+        <div class="categoryName">Members:</div>
+        <div>{{ range .Members}}
+            <div>{{ . }}</div>
+            {{end}}
+        </div>
+        <div class="categoryName">Creation date:</div>
+        <div> {{.CreationDate}}</div>
+        <div class="categoryName">First album:</div>
+        <div>{{.FirstAlbum}}</div>
+        <div class="concerts-container">
+            <div class="categoryName">Concerts:</div>
+            {{range $key, $value := (index .RelationData.Index $id).DatesLocations}}
+            <div class="cities">{{$key}}</div>
+            <div>
+                {{range $value}}
+                <div>{{.}}</div>
+                {{end}}
+            </div>
+            {{end}}
+        </div>
+        <br/>
+        <iframe src="https://rebrand.ly/groupie-tracker/florian/{{.ID}}" width="500" height="400" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    </div>
+
+    <div id="map"></div>
+</div>
+<script src="/static/assets/js/map.js"></script>
+
+<div class="footer">
+    <div>
+        <a href="https://github.com/x33lyS" target="_blank" class="fab fa-github"></a>
+        <a href="https://www.linkedin.com/in/florian-lejosne-178a6b1b6/" target="_blank" class="fab fa-linkedin"></a>
+        <a href="https://discord.gg/8fKKQndCaJ" target="_blank" class="fab fa-discord"></a>
+        <a href="https://www.instagram.com/florian.ljsne/" target="_blank" class="fab fa-instagram"></a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/assets/css/header.css"/>
+    <link rel="stylesheet" href="/static/assets/css/card.css"/>
+    <link rel="stylesheet" href="/static/assets/css/footer.css"/>
+    <link rel="stylesheet" href="/static/assets/css/filter.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Groupie Tracker</title>
+</head>
+
+<body>
+<div class="header">
+    <a href="/" class="logo">Groupie-Tracker</a>
+    <div class="header-right">
+        <a href="/">Home</a>
+        <a href="/search">Search</a>
+        <a href="/filter/all">Filter</a>
+        <a href="https://groupietrackers.herokuapp.com/api" target="_blank">API</a>
+        <a href="https://rickandmortyapi.com/" target="_blank">Other API</a>
+        <a href="https://github.com/x33lyS/groupie-tracker.git" target="_blank">About this project</a>
+    </div>
+</div>
+
+<div class="wrapper"></div>
+<div class="container">
+    <div class="beautiful">
+        <form method="POST" class="filters" action="/filter/all">
+            <div class="cb">
+                <p class="cb-title">Filter by:</p>
+                <input type="checkbox" id="cb-cd" onclick="show('cb-cd', 'filter-cd')">
+                <label for="cb-cd"> Creation Date</label><br>
+                <input type="checkbox" id="cb-fad" onclick="show('cb-fad', 'filter-fad')">
+                <label for="cb-fad"> First Album Date</label><br>
+                <input type="checkbox" id="cb-nom" onclick="show('cb-nom', 'filter-nom')">
+                <label for="cb-nom"> Number Of Members</label><br>
+                <input type="checkbox" id="cb-loc" onclick="show('cb-loc', 'filter-loc')">
+                <label for="cb-loc"> Location</label><br>
+            </div>
+            <div>
+                <div id="filter-cd" style="display:none">
+                    <p>Creation date:</p>
+                    <input name="cd-from" placeholder="From">
+                    <input name="cd-to" placeholder="To"> <br>
+                </div>
+                <div id="filter-fad" style="display:none">
+                    <p>First album date:</p>
+                    <input name="fad-from" placeholder="From">
+                    <input name="fad-to" placeholder="To"> <br>
+                </div>
+                <div id="filter-nom" style="display:none">
+                    <p>Number of members:</p>
+                    <input name="nom-from" placeholder="From">
+                    <input name="nom-to" placeholder="To"> <br>
+                </div>
+                <div id="filter-loc" style="display:none">
+                    <p>Location:</p>
+                    <input name="loc"> <br>
+                </div>
+            </div>
+            <br/>
+            <button class="button" type="submit">Filter</button>
+        </form>
+    </div>
+
+    <div class="grid">
+        <section class="cards">
+            {{range $i, $v := .Artists}}
+            <div class="card">
+                <div class="card__image-container">
+                    <a href="/about/{{ .ID}}">
+                        <img class="img " src="{{.Image}}" alt="Artist's logo">
+                    </a>
+                </div>
+                <div class="card__content">
+                    <p class="card__title text--medium">
+                        {{.Name}}</p>
+                    <div class="card__info">
+                        <p>Creation Date: {{.CreationDate}}</p>
+                        <p>First Album Date: {{.FirstAlbum}}</p>
+                        <p>Number Of Members: {{len .Members}}</p>
+                    </div>
+                </div>
+            </div>
+            {{end}}
+        </section>
+    </div>
+</div>
+<script src="/static/assets/js/filter.js"></script>
+<div class="footer">
+    <div>
+        <a href="https://github.com/x33lyS" target="_blank" class="fab fa-github"></a>
+        <a href="https://www.linkedin.com/in/florian-lejosne-178a6b1b6/" target="_blank" class="fab fa-linkedin"></a>
+        <a href="https://discord.gg/8fKKQndCaJ" target="_blank" class="fab fa-discord"></a>
+        <a href="https://www.instagram.com/florian.ljsne/" target="_blank" class="fab fa-instagram"></a>
+    </div>
+</div>
+</body>
+
+</html>
