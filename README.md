@@ -27,10 +27,12 @@ and open http://localhost:1111 in your browser
 ## Options
 
 ###- Search Bar
+
   <br>
   <img src="./static/assets/img-md/SearchPage.PNG" width=100% /> </br>
 
 ###- Filter
+
   <br>
   <img src="./static/assets/img-md/FilterPage.PNG" width=100% /> </br>
 
