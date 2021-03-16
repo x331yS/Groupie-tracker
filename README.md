@@ -28,13 +28,13 @@ and open http://localhost:1111 in your browser
 
 ### - Search Bar
 
-  <br>
-  <img src="./static/assets/img-md/SearchPage.PNG" width=100% /> </br>
+  <br/>
+  <img src="./static/assets/img-md/SearchPage.PNG" width=100% />
 
 ### - Filter
 
-  <br>
-  <img src="./static/assets/img-md/FilterPage.PNG" width=100% /> </br>
+  <br/>
+  <img src="./static/assets/img-md/FilterPage.PNG" width=100% />
 
 ### Front-end:
 
