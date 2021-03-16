@@ -29,3 +29,6 @@ and open http://localhost:1111 in your browser
 ## Options
 - Search Bar
 - Filter 
+
+## Example
+ [Other API](https://rickandmortyapi.com/)
