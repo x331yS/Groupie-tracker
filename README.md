@@ -54,6 +54,6 @@ and open http://localhost:1111 in your browser
 - 404: Page Not Found, File Not Found
 - 500: Internal Server Error
 
-### API Example:
+### Other API Example:
 
-[Other API](https://rickandmortyapi.com/)
+[Rick and Morty API](https://rickandmortyapi.com/)
