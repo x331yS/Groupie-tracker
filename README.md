@@ -26,12 +26,13 @@ and open http://localhost:1111 in your browser
 
 ## Options
 
-- Search Bar
+###- Search Bar
   <br>
   <img src="./static/assets/img-md/SearchPage.PNG" width=100% /> </br>
-- Filter
+
+###- Filter
   <br>
-  <img src="./static/assets/img-md/FilterPage.PNG" width=80% /> </br>
+  <img src="./static/assets/img-md/FilterPage.PNG" width=100% /> </br>
 
 ### Front-end:
 
@@ -51,7 +52,7 @@ and open http://localhost:1111 in your browser
 ### Errors management:
 
 - 400: Bad Request
-- 404: Page Not Found, File Not Found
+- 404: Page Not Found
 - 500: Internal Server Error
 
 ### Other API Example:
