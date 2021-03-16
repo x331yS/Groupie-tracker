@@ -12,8 +12,8 @@ JS
 Go
 
 ## Used APIs:
-Groupie Tracker API
-Here MAP API
+- Groupie Tracker API
+- Here MAP API
 
 ## Usage
 ```
@@ -27,4 +27,5 @@ $ PORT=1111 ./groupie-tracker
 ```
 and open http://localhost:1111 in your browser
 ## Options
-l
+- Search Bar
+- Filter 
