@@ -63,5 +63,5 @@ and open http://localhost:1111 in your browser
 
 ### Authors:
 
--Lejosne Florian
--Thien Anatole
+- Lejosne Florian
+- Thien Anatole
