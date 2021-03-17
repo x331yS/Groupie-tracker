@@ -60,3 +60,8 @@ and open http://localhost:1111 in your browser
 ### Other API Example:
 
 [Rick and Morty API](https://rickandmortyapi.com/)
+
+### Authors:
+
+-Lejosne Florian
+-Thien Anatole
