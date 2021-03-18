@@ -39,6 +39,6 @@ func AboutHandler(w http.ResponseWriter, r *http.Request) {
 		_ = t.Execute(w, about)
 	} else {
 		//Error 400 Handler
-		gt_error.BadRequest(w, r)
+		gt_error.StatusNotFound(w, r)
 	}
 }
