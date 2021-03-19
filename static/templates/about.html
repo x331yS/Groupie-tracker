@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>About</title>
+    <title>{{.Name}}</title>
     <link rel="stylesheet" href="/static/assets/css/header.css"/>
     <link rel="stylesheet" href="/static/assets/css/about.css">
     <link rel="stylesheet" href="/static/assets/css/footer.css">
@@ -54,7 +54,7 @@
             {{end}}
         </div>
         <br/>
-        <iframe src="https://rebrand.ly/groupie-tracker/florian/{{.ID}}" width="500" height="400" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe class="spotify" src="https://rebrand.ly/groupie-tracker/florian/{{.ID}}"  frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
 
     <div id="map"></div>
