@@ -23,6 +23,8 @@ type Index struct {
 
 type About struct {
 	ID           int
+	Suiv         int
+	Prec         int
 	Name         string
 	Image        string
 	Members      []string

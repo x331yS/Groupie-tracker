@@ -23,14 +23,13 @@
         <a href="/">Home</a>
         <a href="/search">Search</a>
         <a href="/filter/">Filter</a>
-        <a href="https://groupietrackers.herokuapp.com/api" target="_blank">API</a>
-        <a href="https://rickandmortyapi.com/" target="_blank">Other API</a>
-        <a href="https://github.com/x33lyS/groupie-tracker.git" target="_blank">About this project</a>
+        <a href="/about/{{ .Prec}}">Précedent</a>
+        <a href="/about/{{ .Suiv}}">Suivant</a>
     </div>
 </div>
 {{$id := .ID}}
 <div class="container">
-    <img class="artistImage" src="{{.Image}}" alt="Artist's logo">
+    <img class="artistImage"  src="{{.Image}}" alt="Artist's logo">
     <div class="text">
         <div class="artistName">{{.Name}}</div>
         <div class="categoryName">Members:</div>
