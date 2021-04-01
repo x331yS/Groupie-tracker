@@ -6,8 +6,8 @@ import (
 	"./pkg/gt-index"
 	"./pkg/gt-search"
 	"fmt"
+	"log"
 	"net/http"
-	"os"
 	"time"
 )
 
@@ -39,14 +39,9 @@ func main() {
 	//LocalHost
 	fmt.Println("Listening at localhost:1111\nHttp Status :", http.StatusOK)
 	//Open favorite browser
-	//gt_index.Openbrowser("http://localhost:1111")
-	//err := http.ListenAndServe(":1111", nil)
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "1111"
+	gt_index.Openbrowser("http://localhost:1111")
+	err := http.ListenAndServe(":1111", nil)
+	if err != nil {
+		log.Fatal(err)
 	}
-	http.ListenAndServe(":"+port, nil)
 }
