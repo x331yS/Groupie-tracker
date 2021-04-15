@@ -65,7 +65,6 @@ and open http://localhost:1111 in your browser
 
 [Rick and Morty API](https://rickandmortyapi.com/)
 
-### Authors:
+### Author:
 
 - Lejosne Florian
-- Thien Anatole
